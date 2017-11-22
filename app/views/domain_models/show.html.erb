@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @domain_model.name %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @domain_model.desc %>
+</p>
+
+<%= link_to 'Edit', edit_domain_model_path(@domain_model) %> |
+<%= link_to 'Back', domain_models_path %>
