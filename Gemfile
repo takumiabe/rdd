@@ -30,6 +30,7 @@ gem 'coffee-rails', '~> 4.2'
 # gem 'capistrano-rails', group: :development
 
 gem 'bootstrap-sass', '~> 3.3.7'
+gem 'haml-rails', '~> 1.0.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
