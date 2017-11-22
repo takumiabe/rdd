@@ -9,12 +9,12 @@
           %li= message
   .field
     = form.label :condition
-    = form.text_area :condition, id: :requirement_condition
+    = form.text_area :condition, id: :requirement_condition, size: '80x10'
   .field
     = form.label :description
-    = form.text_area :description, id: :requirement_description
+    = form.text_area :description, id: :requirement_description, size: '80x10'
   .field
     = form.label :remark
-    = form.text_area :remark, id: :requirement_remark
+    = form.text_area :remark, id: :requirement_remark, size: '80x10'
   .actions
     = form.submit

@@ -9,9 +9,9 @@
           %li= message
   .field
     = form.label :name
-    = form.text_field :name, id: :domain_model_name
+    = form.text_field :name, id: :domain_model_name, size: '80'
   .field
     = form.label :desc
-    = form.text_area :desc, id: :domain_model_desc
+    = form.text_area :desc, id: :domain_model_desc, size: '80x10'
   .actions
     = form.submit
