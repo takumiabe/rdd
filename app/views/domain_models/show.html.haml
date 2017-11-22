@@ -9,13 +9,24 @@
 %article
   %h4
     出現箇所
-    link_to '参照置換', ref_domain_model_path
+  %table.table
+    - @domain_model.requirements_ref.each do |r|
+      %tr
+        %td!= decorate(r.condition).gsub(@domain_model.name, content_tag(:span, @domain_model.name, style: 'color: red;'))
+        %td!= decorate(r.description).gsub(@domain_model.name, content_tag(:span, @domain_model.name, style: 'color: red;'))
+        %td!= decorate(r.remark).gsub(@domain_model.name, content_tag(:span, @domain_model.name, style: 'color: red;'))
+        %td= link_to "Show", r
+
+  %h4
+    参照ではない出現箇所
   %table.table
     - @domain_model.requirements.each do |r|
       %tr
-        %td!= simple_format r.condition.gsub(@domain_model.name, content_tag(:b, @domain_model.name))
-        %td!= simple_format r.description.gsub(@domain_model.name, content_tag(:b, @domain_model.name))
-        %td!= simple_format r.remark.gsub(@domain_model.name, content_tag(:b, @domain_model.name))
+        %td!= decorate(r.condition).gsub(@domain_model.name, content_tag(:b, @domain_model.name))
+        %td!= decorate(r.description).gsub(@domain_model.name, content_tag(:b, @domain_model.name))
+        %td!= decorate(r.remark).gsub(@domain_model.name, content_tag(:b, @domain_model.name))
+        %td= link_to "Show", r
+  = link_to '全て参照に置き換える', [:replace, @domain_model], method: :post
 
 = link_to 'Edit', edit_domain_model_path(@domain_model)
 |

@@ -1,5 +1,5 @@
 class DomainModelsController < ApplicationController
-  before_action :set_domain_model, only: [:show, :edit, :update, :destroy]
+  before_action :set_domain_model, only: [:show, :edit, :update, :destroy, :replace]
 
   # GET /domain_models
   def index
@@ -43,6 +43,11 @@ class DomainModelsController < ApplicationController
   def destroy
     @domain_model.destroy
     redirect_to domain_models_url, notice: 'Domain model was successfully destroyed.'
+  end
+
+  def replace
+    @domain_model.replace!
+    redirect_to @domain_model
   end
 
   private
