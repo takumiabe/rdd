@@ -5,6 +5,18 @@
 %p
   %strong Desc:
   = @domain_model.desc
+
+%article
+  %h4
+    出現箇所
+    link_to '参照置換', ref_domain_model_path
+  %table.table
+    - @domain_model.requirements.each do |r|
+      %tr
+        %td!= simple_format r.condition.gsub(@domain_model.name, content_tag(:b, @domain_model.name))
+        %td!= simple_format r.description.gsub(@domain_model.name, content_tag(:b, @domain_model.name))
+        %td!= simple_format r.remark.gsub(@domain_model.name, content_tag(:b, @domain_model.name))
+
 = link_to 'Edit', edit_domain_model_path(@domain_model)
 |
 = link_to 'Back', domain_models_path
