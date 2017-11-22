@@ -7,4 +7,9 @@
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
   %body
+    %nav
+      %ul
+        %li= link_to 'Requirements', requirements_path
+        %li= link_to 'Domain Models', domain_models_path
+
     = yield
