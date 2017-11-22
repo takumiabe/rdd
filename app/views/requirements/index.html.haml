@@ -12,9 +12,9 @@
     - @requirements.each do |requirement|
       %tr
         %td= requirement.id
-        %td= simple_format requirement.condition
-        %td= simple_format requirement.description
-        %td= simple_format requirement.remark
+        %td= decorate requirement.condition
+        %td= decorate requirement.description
+        %td= decorate requirement.remark
         %td= link_to 'Show', requirement
         %td= link_to 'Edit', edit_requirement_path(requirement)
         %td= link_to 'Destroy', requirement, method: :delete, data: { confirm: 'Are you sure?' }
