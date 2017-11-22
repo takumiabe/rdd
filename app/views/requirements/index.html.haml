@@ -1,0 +1,22 @@
+%p#notice= notice
+%h1 Requirements
+%table.table
+  %thead
+    %tr
+      %th ID
+      %th Condition
+      %th Description
+      %th Remark
+      %th{:colspan => "3"}
+  %tbody
+    - @requirements.each do |requirement|
+      %tr
+        %td= requirement.id
+        %td= simple_format requirement.condition
+        %td= simple_format requirement.description
+        %td= simple_format requirement.remark
+        %td= link_to 'Show', requirement
+        %td= link_to 'Edit', edit_requirement_path(requirement)
+        %td= link_to 'Destroy', requirement, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Requirement', new_requirement_path

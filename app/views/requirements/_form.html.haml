@@ -1,0 +1,20 @@
+= form_with(model: requirement, local: true) do |form|
+  - if requirement.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(requirement.errors.count, "error")
+        prohibited this requirement from being saved:
+      %ul
+        - requirement.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = form.label :condition
+    = form.text_area :condition, id: :requirement_condition
+  .field
+    = form.label :description
+    = form.text_area :description, id: :requirement_description
+  .field
+    = form.label :remark
+    = form.text_area :remark, id: :requirement_remark
+  .actions
+    = form.submit

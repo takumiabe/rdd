@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @domain_model.name
+%p
+  %strong Desc:
+  = @domain_model.desc
+= link_to 'Edit', edit_domain_model_path(@domain_model)
+|
+= link_to 'Back', domain_models_path

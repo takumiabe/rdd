@@ -1,0 +1,18 @@
+%p#notice= notice
+%h1 Domain Models
+%table
+  %thead
+    %tr
+      %th Name
+      %th Desc
+      %th{:colspan => "3"}
+  %tbody
+    - @domain_models.each do |domain_model|
+      %tr
+        %td= domain_model.name
+        %td= domain_model.desc
+        %td= link_to 'Show', domain_model
+        %td= link_to 'Edit', edit_domain_model_path(domain_model)
+        %td= link_to 'Destroy', domain_model, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Domain Model', new_domain_model_path
