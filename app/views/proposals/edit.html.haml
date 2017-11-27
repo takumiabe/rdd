@@ -1,0 +1,11 @@
+%h1= link_to 'Requirement', @requirement
+
+= render @requirement
+
+%h1 Editing proposal
+
+= render 'form'
+
+= link_to 'Show', [@requirement, @proposal]
+\|
+= link_to 'Back', [@requirement, :proposals]

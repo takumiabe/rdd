@@ -1,0 +1,19 @@
+= form_for [@requirement, @proposal] do |f|
+  - if @proposal.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@proposal.errors.count, "error")} prohibited this proposal from being saved:"
+      %ul
+        - @proposal.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :title
+    = f.text_field :title, size: '80'
+  .field
+    = f.label :description
+    = f.text_area :description, size: '80x10'
+  .field
+    = f.label :remark
+    = f.text_area :remark, size: '80x10'
+  .actions
+    = f.submit 'Save'

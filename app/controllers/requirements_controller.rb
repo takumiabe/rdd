@@ -3,7 +3,7 @@ class RequirementsController < ApplicationController
 
   # GET /requirements
   def index
-    @requirements = Requirement.all
+    @requirements = Requirement.preload(:proposals).all
   end
 
   # GET /requirements/1

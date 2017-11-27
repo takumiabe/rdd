@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :requirements
+  resources :requirements do
+    resources :proposals
+  end
+
   resources :domain_models do
     member do
       post :replace

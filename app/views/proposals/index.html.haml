@@ -1,0 +1,29 @@
+%h1= link_to 'Requirement', @requirement
+
+= render @requirement
+
+%h1 Listing proposals
+
+%table.table
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th Remark
+      %th
+      %th
+      %th
+
+  %tbody
+    - @proposals.each do |proposal|
+      %tr
+        %td= proposal.title
+        %td= decorate proposal.description
+        %td= decorate proposal.remark
+        %td= link_to 'Show', [@requirement, proposal]
+        %td= link_to 'Edit', [:edit, @requirement, proposal]
+        %td= link_to 'Destroy', [@requirement, proposal], method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Proposal', [:new, @requirement, :proposal]

@@ -1,13 +1,7 @@
 %p#notice= notice
-%p
-  %strong Condition:
-  = @requirement.condition
-%p
-  %strong Description:
-  = @requirement.description
-%p
-  %strong Remark:
-  = @requirement.remark
+
+= render @requirement
+
 = link_to 'Edit', edit_requirement_path(@requirement)
 |
 = link_to 'Back', requirements_path
