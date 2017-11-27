@@ -1,7 +1,11 @@
 %p#notice= notice
 
+%h1 Requirement
 = render @requirement
 
 = link_to 'Edit', edit_requirement_path(@requirement)
 |
 = link_to 'Back', requirements_path
+
+%h1 Proposals
+= link_to "Proposals(#{@requirement.proposals.size})", [@requirement, :proposals]

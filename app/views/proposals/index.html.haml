@@ -20,9 +20,15 @@
         %td= proposal.title
         %td= decorate proposal.description
         %td= decorate proposal.remark
-        %td= link_to 'Show', [@requirement, proposal]
-        %td= link_to 'Edit', [:edit, @requirement, proposal]
-        %td= link_to 'Destroy', [@requirement, proposal], method: :delete, data: { confirm: 'Are you sure?' }
+        %td
+          = link_to [@requirement, proposal], class: %i[btn btn-default] do
+            %i.glyphicon.glyphicon-zoom-in
+        %td
+          = link_to [:edit, @requirement, proposal], class: %i[btn btn-default] do
+            %i.glyphicon.glyphicon-edit
+        %td
+          = link_to [@requirement, proposal], method: :delete, data: { confirm: 'Are you sure?' }, class: %i[btn btn-danger] do
+            %i.glyphicon.glyphicon-remove
 
 %br
 

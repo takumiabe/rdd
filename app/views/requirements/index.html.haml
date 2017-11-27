@@ -15,9 +15,24 @@
         %td= decorate requirement.condition
         %td= decorate requirement.description
         %td= decorate requirement.remark
-        %td= link_to 'Show', requirement
-        %td= link_to 'Edit', edit_requirement_path(requirement)
-        %td= link_to 'Destroy', requirement, method: :delete, data: { confirm: 'Are you sure?' }
-        %td= link_to "Proposals(#{requirement.proposals.size})", [requirement, :proposals]
+        %td
+          = link_to requirement, class: %i[btn btn-default] do
+            %i.glyphicon.glyphicon-zoom-in
+        %td
+          = link_to edit_requirement_path(requirement), class: %i[btn btn-default] do
+            %i.glyphicon.glyphicon-edit
+        %td
+          = link_to requirement, method: :delete, data: { confirm: 'Are you sure?' }, class: %i[btn btn-danger] do
+            %i.glyphicon.glyphicon-remove
+        %td
+          = link_to [requirement, :proposals] do
+            - if requirement.proposals.size == 0
+              %button.btn.btn-primary
+                Proposals
+                .badge= requirement.proposals.size
+            - else
+              %button.btn.btn-secondary
+                Proposals
+                .badge= requirement.proposals.size
 %br/
 = link_to 'New Requirement', new_requirement_path
