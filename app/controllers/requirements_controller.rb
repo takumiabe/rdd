@@ -4,6 +4,50 @@ class RequirementsController < ApplicationController
   # GET /requirements
   def index
     @requirements = Requirement.preload(:proposals).all
+
+    if params[:format] == 'xlsx'
+      workbook = RubyXL::Workbook.new
+      sheet = workbook[0]
+      sheet.sheet_name = "要求"
+
+      %w[ID 状態 条件 要求 備考].each.with_index do |v, column|
+        sheet.add_cell(0, column, v)
+      end
+
+      @requirements.each.with_index(1) do |r, row|
+        [
+          r.id,
+          r.status,
+          helpers.decorate(r.condition, text: true),
+          helpers.decorate(r.description, text: true),
+          helpers.decorate(r.remark, text: true),
+        ].each.with_index do |v, column|
+          cell = sheet.add_cell(row, column, v)
+          cell.change_text_wrap(true) if v.to_s.include? "\n"
+        end
+        sheet.change_row_vertical_alignment(row, 'top')
+      end
+
+      sheet = workbook.add_worksheet("要件")
+      %w[要求ID タイトル 要件 備考].each.with_index do |v, column|
+        sheet.add_cell(0, column, v)
+      end
+
+      Proposal.all.each.with_index(1) do |r, row|
+        [
+          r.requirement_id,
+          r.title,
+          helpers.decorate(r.description, text: true),
+          helpers.decorate(r.remark, text: true),
+        ].each.with_index do |v, column|
+          cell = sheet.add_cell(row, column, v)
+          cell.change_text_wrap(true) if v.to_s.include? "\n"
+        end
+        sheet.change_row_vertical_alignment(row, 'top')
+      end
+
+      send_data workbook.stream.read, filename: '要件定義.xlsx'
+    end
   end
 
   # GET /requirements/1
