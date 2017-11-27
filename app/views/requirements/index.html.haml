@@ -4,6 +4,7 @@
   %thead
     %tr
       %th ID
+      %th Status
       %th Condition
       %th Description
       %th Remark
@@ -12,6 +13,11 @@
     - @requirements.each do |requirement|
       %tr
         %td= requirement.id
+        %td
+          - if requirement.status == :fixed
+            %span.btn.btn-default= decorate requirement.status.text
+          - else
+            %span.btn.btn-danger= decorate requirement.status.text
         %td= decorate requirement.condition
         %td= decorate requirement.description
         %td= decorate requirement.remark

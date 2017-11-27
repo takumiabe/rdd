@@ -53,6 +53,6 @@ class RequirementsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def requirement_params
-      params.require(:requirement).permit(:condition, :description, :remark)
+      params.require(:requirement).permit(:status, :condition, :description, :remark)
     end
 end

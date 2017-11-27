@@ -7,6 +7,10 @@
       %ul
         - requirement.errors.full_messages.each do |message|
           %li= message
+
+  .field
+    = form.label :status
+    = form.select :status, Requirement.status.options
   .field
     = form.label :condition
     = form.text_area :condition, id: :requirement_condition, size: '80x10'
